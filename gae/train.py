@@ -43,7 +43,7 @@ adj, features = load_data(dataset_str)
 adj_orig = adj
 adj_orig = adj_orig - sp.dia_matrix((adj_orig.diagonal()[np.newaxis, :], [0]), shape=adj_orig.shape)
 adj_orig.eliminate_zeros()
-
+# split the data randomly !!
 adj_train, train_edges, val_edges, val_edges_false, test_edges, test_edges_false = mask_test_edges(adj)
 adj = adj_train
 

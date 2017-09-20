@@ -15,7 +15,7 @@ def preprocess_graph(adj):
     adj = sp.coo_matrix(adj)
     adj_ = adj + sp.eye(adj.shape[0])
     rowsum = np.array(adj_.sum(1))
-    degree_mat_inv_sqrt = sp.diags(np.power(rowsum, -0.5).flatten())
+    degree_mat_inv_sqrt = sp.diags(np.power(rowsum, -0.5).flatten(), 0)
     adj_normalized = adj_.dot(degree_mat_inv_sqrt).transpose().dot(degree_mat_inv_sqrt).tocoo()
     return sparse_to_tuple(adj_normalized)
 
